@@ -6,7 +6,7 @@ import lombok.NonNull;
 // On utilise lombok pour générer les getters et setters...
 // La bibliothèque est importée dans le fichier pom.xml
 
-// Lombok : génère getter / setter / constructeur, toString...
+// Lombok : génère getter / setter / constructeur, toString
 // https://projectlombok.org/features/Data
 @Data
 public class Site {
@@ -19,13 +19,13 @@ public class Site {
 	public static void main(String[] args) { // Un exemple des méthodes générées par lombok
 
 		// Constructeur avec les paramètres obligatoires
-		Site s = new Site("Site1", "Site1 details");
+		Site site = new Site("Site1", "Site1 details");
 
 		// Setters
-		s.setNom("Mont Saint Michel");
-		s.setDetails("Plongee autour du Mont Saint Michel");
+		site.setNom("Mont Saint Michel");
+		site.setDetails("Plongee autour du Mont Saint Michel");
 
 		// toString()
-		System.out.printf("Le site : %s\n", s);
+		System.out.printf("Le site : %s\n", site);
 	}
 }
