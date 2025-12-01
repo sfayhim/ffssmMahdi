@@ -1,9 +1,11 @@
 /**
  * @(#) Plongee.java
  */
-package ffssm;
+package FFSSM;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Plongee {
 
@@ -23,22 +25,42 @@ public class Plongee {
 		this.date = date;
 		this.profondeur = profondeur;
 		this.duree = duree;
+		this.participants = new ArrayList<>();
 	}
 
-	public void ajouteParticipant(Licence participant) {
-		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+	public void ajouteParticipant(Plongeur participant) {
+		if (participant == null) {
+			return;
+		}
+		if (!participants.contains(participant)) {
+			participants.add(participant);
+		}
 	}
 
 	/**
-	 * Détermine si la plongée est conforme. 
+	 * Détermine si la plongée est conforme.
 	 * Une plongée est conforme si tous les plongeurs de la palanquée ont une
 	 * licence valide à la date de la plongée
+	 * 
 	 * @return vrai si la plongée est conforme
 	 */
 	public boolean estConforme() {
-		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		if (participants == null) {
+			return true;
+		}
+		for (Plongeur p : participants) {
+			Licence l = p.derniereLicence();
+			if (l == null || !l.estValide(date)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private List<Plongeur> participants;
+
+	public List<Plongeur> getParticipants() {
+		return participants;
 	}
 
 }
